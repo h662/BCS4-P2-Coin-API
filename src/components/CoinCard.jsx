@@ -1,6 +1,6 @@
 const CoinCard = ({ coinPrice }) => {
   return (
-    <li className="flex items-center">
+    <li className="flex justify-center">
       <img
         className="w-6 inline-block"
         src={`./images/${coinPrice.market.substring(4)}.png`}

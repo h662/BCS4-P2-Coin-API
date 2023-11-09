@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Slider from "react-slick";
 import CoinCard from "./components/CoinCard";
 
 const App = () => {
@@ -22,15 +23,26 @@ const App = () => {
   }, []);
 
   return (
-    <main className="min-h-screen flex justify-center items-center">
-      <ul className="flex flex-col gap-8">
-        {coinPrices ? (
-          coinPrices.map((v, i) => {
-            return <CoinCard key={i} coinPrice={v} />;
-          })
-        ) : (
-          <div>로딩중...</div>
-        )}
+    <main className="min-h-screen flex flex-col justify-center items-center">
+      <ul className="w-60 flex flex-col justify-center">
+        <Slider
+          dots={true}
+          infinite={true}
+          speed={500}
+          slidesToShow={1}
+          slidesToScroll={1}
+          autoplay={true}
+          autoplaySpeed={2000}
+          arrows={false}
+        >
+          {coinPrices ? (
+            coinPrices.map((v, i) => {
+              return <CoinCard key={i} coinPrice={v} />;
+            })
+          ) : (
+            <div>로딩중...</div>
+          )}
+        </Slider>
       </ul>
     </main>
   );
